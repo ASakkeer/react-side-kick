@@ -1,10 +1,32 @@
 import React, { useState } from "react";
+import "./ChatRoom.css";
 
-const ChatRoom = () => {
+const ChatRoom = (props) => {
+  const { selectedChat } = props;
+  console.log(selectedChat, "khubunhbjb");
   const [inputText, setInputText] = useState("");
   const [messages, setMessages] = useState([
     { text: "Hey, how's it going?", isSender: false },
     { text: "Great! How about you?", isSender: true },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
+    { text: "I am good too.", isSender: false },
     { text: "I am good too.", isSender: false },
     // Add more messages as needed
   ]);
@@ -22,7 +44,10 @@ const ChatRoom = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={styles.container} className="cr-container">
+      <div style={styles.navContainer}>
+        <p>{selectedChat?.name || "--"}</p>
+      </div>
       <div style={styles.messagesContainer}>
         {messages.map((message, index) => (
           <div
@@ -66,14 +91,14 @@ const styles = {
     flexDirection: "column",
     borderLeft: "1px solid #ccc",
     backgroundColor: "#f5f5f5",
-    padding: "20px",
-    overflowY: "scroll",
+    overflowY: "auto",
   },
   messagesContainer: {
     display: "flex",
     flexDirection: "column",
     flex: 1,
     justifyContent: "flex-end",
+    padding: "20px 20px 10px 20px",
   },
   message: {
     display: "flex",
@@ -87,7 +112,21 @@ const styles = {
   },
   inputContainer: {
     display: "flex",
-    marginTop: "20px",
+    // marginTop: "20px",
+    position: "sticky",
+    bottom: "0px",
+    padding: "20px",
+    background: "#fff",
+    boxShadow: "0px -1px 10px 1px #CCCCCC",
+  },
+  navContainer: {
+    display: "flex",
+    // marginTop: "20px",
+    position: "sticky",
+    top: "0px",
+    padding: "10px 20px",
+    background: "#fff",
+    boxShadow: "0px 1px 10px 1px #CCCCCC",
   },
   input: {
     flex: 1,
