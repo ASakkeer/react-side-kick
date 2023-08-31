@@ -1,0 +1,26 @@
+.container {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    z-index: 0;
+    position: relative;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.left-container {
+    width: 260px;
+    background-color: rgb(32, 33, 35);
+    padding: 15px;
+}
+
+.right-container {
+    flex: 1 1 0%;
+    display: flex;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    /* padding: 15px; */
+}
