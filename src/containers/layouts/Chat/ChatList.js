@@ -103,7 +103,40 @@ function ChatList() {
   return (
     <div className="container h-full">
       <div className="left-panel">
-        <div className="header">WhatsApp Web</div>
+        <div className="header">
+          <p>WhatsApp Web</p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              border: "1px solid #c3c3c3",
+              borderRadius: "5px",
+              marginTop: 15,
+            }}
+          >
+            <span
+              style={{
+                padding: "10px 15px",
+                top: "-1px",
+                position: "relative",
+                color: "rgb(126, 126, 126)",
+              }}
+            >
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </span>
+            <input
+              type="text"
+              style={{
+                width: "100%",
+                padding: "15px 0px",
+                border: "none",
+                outline: "none",
+                background: "none",
+              }}
+              placeholder="Type to search"
+            />
+          </div>
+        </div>
         <div className="chat-list">
           {chatList.map((chat) => (
             <div

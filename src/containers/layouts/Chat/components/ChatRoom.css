@@ -29,3 +29,19 @@
 {
   background-color: #7C3E66;
 }
+
+._cr-send-button {
+  margin-left: 10px;
+  background-color: rgb(124, 62, 102);
+  color: white;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  opacity: 0.9;
+  width: 50px;
+  height: 50px;
+}
+
+._cr-send-button:hover {
+  opacity: 1;
+}

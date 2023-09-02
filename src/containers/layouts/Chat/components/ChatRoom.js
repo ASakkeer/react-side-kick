@@ -1,33 +1,30 @@
 import React, { useState } from "react";
 import "./ChatRoom.css";
+import NoChatSelectedIimage from "../../../../assets/images/no-chats.png";
+
+const Message = ({ message }) => (
+  <div
+    style={{
+      alignSelf: message.isSender ? "flex-end" : "flex-start",
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: message.isSender ? "#DCF8C6" : "#ECE5DD",
+        padding: "10px",
+        borderRadius: "10px",
+      }}
+    >
+      {message.text}
+    </div>
+  </div>
+);
 
 const ChatRoom = (props) => {
   const { selectedChat } = props;
-  console.log(selectedChat, "khubunhbjb");
   const [inputText, setInputText] = useState("");
   const [messages, setMessages] = useState([
     { text: "Hey, how's it going?", isSender: false },
-    { text: "Great! How about you?", isSender: true },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
-    { text: "I am good too.", isSender: false },
     // Add more messages as needed
   ]);
 
@@ -45,44 +42,77 @@ const ChatRoom = (props) => {
 
   return (
     <div style={styles.container} className="cr-container">
-      <div style={styles.navContainer}>
-        <p>{selectedChat?.name || "--"}</p>
-      </div>
-      <div style={styles.messagesContainer}>
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            style={{
-              ...styles.message,
-              alignSelf: message.isSender ? "flex-end" : "flex-start",
-            }}
-          >
-            <div
-              style={{
-                ...styles.messageBubble,
-                backgroundColor: message.isSender ? "#DCF8C6" : "#ECE5DD",
-              }}
-            >
-              {message.text}
-            </div>
+      {selectedChat ? (
+        <>
+          <ChatHeader selectedChat={selectedChat} />
+          <div style={styles.messagesContainer}>
+            {messages.map((message, index) => (
+              <Message key={index} message={message} />
+            ))}
           </div>
-        ))}
-      </div>
-      <div style={styles.inputContainer}>
-        <input
-          type="text"
-          placeholder="Type a message..."
-          value={inputText}
-          onChange={handleInputChange}
-          style={styles.input}
-        />
-        <button onClick={handleSendMessage} style={styles.sendButton}>
-          Send
-        </button>
-      </div>
+          <ChatInput
+            inputText={inputText}
+            handleInputChange={handleInputChange}
+            handleSendMessage={handleSendMessage}
+          />
+        </>
+      ) : (
+        <NoChatSelected />
+      )}
     </div>
   );
 };
+
+const ChatHeader = ({ selectedChat }) => (
+  <div style={styles.navContainer}>
+    <div className="avatar">
+      <img src={selectedChat?.avatarUrl} alt="Avatar" />
+    </div>
+    <p style={{ fontWeight: "bold" }}>{selectedChat?.name || "--"}</p>
+  </div>
+);
+
+const ChatInput = ({ inputText, handleInputChange, handleSendMessage }) => (
+  <div style={styles.inputContainer}>
+    <input
+      type="text"
+      placeholder="Type a message..."
+      value={inputText}
+      onChange={handleInputChange}
+      style={styles.input}
+    />
+    {!!inputText ? (
+      <button onClick={handleSendMessage} className="_cr-send-button">
+        <i
+          className="fa fa-paper-plane"
+          aria-hidden="true"
+          style={{ fontSize: 18 }}
+        ></i>
+      </button>
+    ) : (
+      <button onClick={handleSendMessage} className="_cr-send-button">
+        <i
+          className="fa fa-microphone"
+          aria-hidden="true"
+          style={{ fontSize: 18 }}
+        ></i>
+      </button>
+    )}
+  </div>
+);
+
+const NoChatSelected = () => (
+  <div style={styles.noChatSelected}>
+    <img
+      src={NoChatSelectedIimage}
+      alt="No chat selected"
+      style={styles.noChatSelectedImg}
+    />
+    <p style={{ margin: 0, fontWeight: "bold" }}>
+      Select a chat to start messaging
+    </p>
+  </div>
+);
 
 const styles = {
   container: {
@@ -115,7 +145,7 @@ const styles = {
     // marginTop: "20px",
     position: "sticky",
     bottom: "0px",
-    padding: "20px",
+    padding: "10px 20px",
     background: "#fff",
     boxShadow: "0px -1px 10px 1px #CCCCCC",
   },
@@ -132,16 +162,19 @@ const styles = {
     flex: 1,
     padding: "15px",
     border: "1px solid #ccc",
-    borderRadius: "5px",
+    borderRadius: "50px",
   },
-  sendButton: {
-    marginLeft: "10px",
-    padding: "10px 20px",
-    backgroundColor: "#007BFF",
-    color: "white",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
+  noChatSelected: {
+    flex: "1 1 0%",
+    alignItems: "center",
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "column",
+    background: "#7c3e6617",
+  },
+  noChatSelectedImg: {
+    maxWidth: "100%", // Set maximum width to fit the container
+    maxHeight: "400px", // Set maximum height as needed
   },
 };
 
