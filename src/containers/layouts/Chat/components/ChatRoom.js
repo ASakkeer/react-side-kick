@@ -23,10 +23,7 @@ const Message = ({ message }) => (
 const ChatRoom = (props) => {
   const { selectedChat } = props;
   const [inputText, setInputText] = useState("");
-  const [messages, setMessages] = useState([
-    { text: "Hey, how's it going?", isSender: false },
-    // Add more messages as needed
-  ]);
+  const [messages, setMessages] = useState([]);
 
   const handleInputChange = (event) => {
     setInputText(event.target.value);
@@ -67,8 +64,31 @@ const ChatHeader = ({ selectedChat }) => (
   <div style={styles.navContainer}>
     <div className="avatar">
       <img src={selectedChat?.avatarUrl} alt="Avatar" />
+      <div
+        style={{
+          width: "8px",
+          height: "8px",
+          borderRadius: "50px",
+          position: "absolute",
+          right: "4px",
+          bottom: "2px",
+          background: selectedChat.status === "online" ? "green" : "grey",
+        }}
+      ></div>
     </div>
-    <p style={{ fontWeight: "bold" }}>{selectedChat?.name || "--"}</p>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <p style={{ fontWeight: "bold", margin: 0 }}>
+        {selectedChat?.name || "--"}
+      </p>
+      <p style={{ color: "grey", fontSize: "12px", margin: 0 }}>
+        {selectedChat?.status}
+      </p>
+    </div>
   </div>
 );
 
@@ -150,13 +170,13 @@ const styles = {
     boxShadow: "0px -1px 10px 1px #CCCCCC",
   },
   navContainer: {
-    display: "flex",
-    // marginTop: "20px",
     position: "sticky",
     top: "0px",
     padding: "10px 20px",
-    background: "#fff",
-    boxShadow: "0px 1px 10px 1px #CCCCCC",
+    background: "rgb(255, 255, 255)",
+    boxShadow: "rgb(204, 204, 204) 0px 1px 10px 1px",
+    display: "flex",
+    alignItems: "center",
   },
   input: {
     flex: 1,

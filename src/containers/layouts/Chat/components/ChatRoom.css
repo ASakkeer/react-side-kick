@@ -45,3 +45,7 @@
 ._cr-send-button:hover {
   opacity: 1;
 }
+
+.avatar {
+  position: relative;
+}
