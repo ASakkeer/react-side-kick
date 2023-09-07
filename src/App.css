@@ -1,3 +1,15 @@
 .App {
   height: 100%;
 }
+
+/* For screens larger than 700px, set the width to 200px */
+/* ._textInput {
+  width: 300px;
+} */
+
+/* For screens 700px or smaller, set the width to 100% */
+/* @media (max-width: 700px) {
+  ._textInput {
+    width: 100%;
+  }
+} */
