@@ -22,7 +22,9 @@ Link.defaultProps = {
   text: "",
   target: "_self",
   rel: "",
-  style: {},
+  style: {
+    color: "#7C3E66",
+  },
   id: "",
   className: "",
   onClick: () => {},

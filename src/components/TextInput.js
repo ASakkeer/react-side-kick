@@ -6,7 +6,7 @@ function TextInput({
   type,
   onChange,
   placeholder,
-  inputStyle,
+  style,
   containerStyle,
   id,
   disabled,
@@ -22,7 +22,7 @@ function TextInput({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        style={inputStyle}
+        style={style}
         disabled={disabled}
         className={className}
         name={name}
@@ -37,7 +37,15 @@ TextInput.defaultProps = {
   type: "text",
   onChange: () => {},
   placeholder: "",
-  inputStyle: {},
+  style: {
+    width: "100%",
+    outline: "none",
+    padding: "20px 15px",
+    boxShadow: "0 4px 10px rgba(0,0,0,.03)",
+    border: "none",
+    marginBottom: "15px",
+    borderRadius: "5px",
+  },
   containerStyle: {},
   id: "",
   disabled: false,

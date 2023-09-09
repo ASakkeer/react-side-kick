@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import "./App.css";
 // import { Button, TextInput } from "./components";
 import { ChatList } from "./containers";
+import { Login } from "./containers/authentications";
 
 function App() {
   // const [textValue, setTextValue] = useState("");
 
   return (
     <div className="App">
-      <ChatList />
+      {/* <ChatList /> */}
       {/* <p>hi</p> */}
 
       {/* <label htmlFor="fname">First name:</label> */}
@@ -24,6 +25,7 @@ function App() {
         className="_textInput"
         // name=""
       /> */}
+      <Login />
     </div>
   );
 }

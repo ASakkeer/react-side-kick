@@ -92,7 +92,7 @@ const ChatRoom = (props) => {
         </div>
       )} */}
       <div
-        style={styles.container}
+        style={{}}
         className="cr-container"
         ref={messagesContainerRef}
         // onScroll={handleScroll}

@@ -12,7 +12,7 @@ export const USER_ROLES = {
 
 // Colors
 export const COLORS = {
-  PRIMARY: "#007bff",
+  PRIMARY: "#7C3E66",
   SECONDARY: "#6c757d",
   SUCCESS: "#28a745",
   ERROR: "#dc3545",

@@ -29,7 +29,14 @@ function Button({
 Button.defaultProps = {
   type: "button",
   onClick: () => {},
-  style: {},
+  style: {
+    width: "100%",
+    outline: "none",
+    padding: "20px 15px",
+    boxShadow: "0 4px 10px rgba(0,0,0,.03)",
+    border: "none",
+    borderRadius: "5px",
+  },
   id: "",
   className: "",
   disabled: false,
