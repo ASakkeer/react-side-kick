@@ -88,8 +88,19 @@
 ._lg_no_ac_c {
     justify-content: center;
     display: flex;
+    z-index: 1;
+
 }
 
 ._lg_no_ac_c p {
     margin-right: 5px;
+}
+
+._jelly {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /* z-index: 4; */
 }
