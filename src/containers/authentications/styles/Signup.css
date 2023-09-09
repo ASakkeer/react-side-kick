@@ -23,7 +23,7 @@
     min-height: 100vh;
 }
 
-.login_c {
+.signup_c {
     display: flex;
     flex-direction: column;
     justify-content: center;

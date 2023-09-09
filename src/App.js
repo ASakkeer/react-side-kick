@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 // import { Button, TextInput } from "./components";
 import { ChatList } from "./containers";
-import { Login } from "./containers/authentications";
+import { Login, Signup } from "./containers/authentications";
 
 function App() {
   // const [textValue, setTextValue] = useState("");
@@ -25,7 +25,8 @@ function App() {
         className="_textInput"
         // name=""
       /> */}
-      <Login />
+      {/* <Login /> */}
+      <Signup />
     </div>
   );
 }
